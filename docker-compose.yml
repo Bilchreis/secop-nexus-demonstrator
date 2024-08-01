@@ -1,0 +1,37 @@
+services:
+  gas_dosing:
+    build:
+      context: .
+      dockerfile: Dockerfile_gas_dosing
+    ports:
+      - '10800:10800'
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+  
+  reactor_cell:
+    build:
+      context: .
+      dockerfile: Dockerfile_reactor_cell
+    ports:
+      - '10801:10801'
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+
+  tiled:
+      restart: always
+      network_mode: host
+      environment:
+          - TILED_SINGLE_USER_API_KEY=secret
+      volumes:
+          - $PWD/tiled_config:/deploy/config:ro
+      image: registry.hzdr.de/hzb/bluesky/core/images/tiled:1.0.0
+      command: tiled serve config /deploy/config/config.yml
+
+
+
+
+
+
+
+

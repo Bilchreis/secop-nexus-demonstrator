@@ -1,0 +1,10 @@
+secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd@v0.4
+bluesky
+databroker
+mlzlog
+ipykernel
+ophyd
+matplotlib
+prettyprint
+numpy
+tiled

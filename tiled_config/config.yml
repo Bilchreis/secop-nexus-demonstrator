@@ -1,0 +1,8 @@
+# config.yml
+authentication:
+  allow_anonymous_access: true
+trees:
+- tree: databroker.mongo_normalized:Tree.from_uri
+  path: /
+  args:
+    uri: mongodb://blueskyuser:sun@localhost:27017/bluesky?authSource=bluesky
