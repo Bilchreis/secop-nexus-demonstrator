@@ -7,4 +7,4 @@ ophyd
 matplotlib
 prettyprint
 numpy
-tiled
+tiled[client]

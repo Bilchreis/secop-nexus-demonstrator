@@ -17,6 +17,21 @@ services:
     stdin_open: true # docker run -i
     tty: true        # docker run -t
 
+  mongodb:
+      image:  mongo:7.0.5
+      container_name: mongodb
+      network_mode: host
+      restart: always
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=admin
+        - MONGO_INITDB_ROOT_PASSWORD=password
+        - MONGO_INITDB_DATABASE=bluesky
+      volumes:
+        - ./data:/data/db
+        - ./db_scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        - "/etc/localtime:/etc/localtime:ro"
+        - "/etc/timezone:/etc/timezone:ro"  
+      
 
   tiled:
       restart: always

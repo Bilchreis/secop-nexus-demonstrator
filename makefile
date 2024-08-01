@@ -53,4 +53,4 @@ frappy/._venv/touchfile: subinit frappy/requirements-gui.txt
 
 
 frappy: sim subinit frappy_venv venv
-	. frappy/._venv/bin/activate;(python3 frappy/bin/frappy-gui localhost:10800 localhost:10801 localhost:10802)
+	. frappy/._venv/bin/activate;(python3 frappy/bin/frappy-gui localhost:10800 localhost:10801 )
