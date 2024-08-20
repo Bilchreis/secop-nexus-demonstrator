@@ -1,10 +1,9 @@
 secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd@v0.4
 bluesky
-databroker
+databroker[all]==2.0.0b46
 mlzlog
 ipykernel
 ophyd
 matplotlib
 prettyprint
 numpy
-tiled[client]
