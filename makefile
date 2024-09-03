@@ -2,11 +2,11 @@
 
 
 
-venv: .venv/touchfile frappy/._venv/touchfile
+venv: frappy/._venv/touchfile .venv/touchfile 
 
 .venv/touchfile: requirements.txt 
 	python3 -m venv .venv
-	. .venv/bin/activate; pip install --upgrade pip; pip install -r requirements.txt
+	. .venv/bin/activate; pip install --upgrade pip; pip install -r requirements.txt;cd nexuscreator/python_library ;pip install -e .
 	touch .venv/touchfile
 
 
@@ -39,7 +39,8 @@ rebuild:
 
 
 subinit: frappy/.gitignore
-	
+
+
 frappy/.gitignore:
 	git submodule update --init
 

@@ -1,3 +1,6 @@
 [submodule "frappy"]
 	path = frappy
 	url = https://github.com/SampleEnvironment/frappy
+[submodule "nexuscreator"]
+	path = nexuscreator
+	url = https://gitlab.com/helmholtz-berlin/nexuscreator
