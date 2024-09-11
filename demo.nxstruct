@@ -1,0 +1,356 @@
+
+entry:NXentry
+	@NX_class = "NXentry"
+
+	sample:NXsample
+		@NX_class = "NXsample"
+		type:NX_CHAR = "sample"
+
+		gas_dosing:NXenvironment
+			@NX_class = "NXenvironment"
+			name:NX_CHAR = "TODO"
+
+		reactor_cell:NXenvironment
+			@NX_class = "NXenvironment"
+			name:NX_CHAR = "TODO"
+
+		flowrate:NXlog
+			@NX_class = NXlog
+			value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+				@units = "ml/min"
+				@type = "double"
+			time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+				@start = 0
+				@units = "s"
+
+		pressure:NXlog
+			@NX_class = NXlog
+			value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+				@units = "mbar"
+				@type = "double"
+			time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+				@start = 0
+				@units = "s"
+
+		temperature_regulation:NXlog
+			@NX_class = NXlog
+			value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+				@units = "K"
+				@type = "double"
+			time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+				@start = 0
+				@units = "s"
+
+		temperature:NXlog
+			@NX_class = NXlog
+			value:NX_FLOAT64 = reactor_cell-temperature_sam-value
+				@units = "K"
+				@type = "double"
+			time:NX_FLOAT64 = reactor_cell-temperature_sam-value-timestamp
+				@start = 0
+				@units = "s"
+
+	sample_environment:NXsample
+		@NX_class = "NXsample"
+		type:NX_CHAR = "sample environment"
+
+		gas_dosing:NXenvironment
+			@NX_class = NXenvironment
+			name:NX_CHAR = "gas_dosing"
+			short_name:NX_CHAR = "gas_dosing"
+			type:NX_CHAR = "FRAPPY - The Python Framework for SECoP (2021.02)"
+			description:NX_CHAR = "Gas dosingGas dosing Node, with simulated hardware"
+		
+		
+			massflow_contr1:NXsensor
+				@NX_class = NXsensor
+				name:NX_CHAR = "massflow_contr1"
+				measurement:NX_CHAR = "flowrate"
+					@secop_importance:NX_INT32 = 40
+					@secop_key:NX_CHAR = "PLACEHOLDER"
+					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				model:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
+				description:NX_CHAR = "A simulated massflow controller "
+			
+			
+				value_log:NXlog
+					@NX_class = NXlog
+					value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+						@units = "ml/min"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+						@start = 0
+						@units = "s"
+				
+				parameters:NXcollection
+					target:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+							@units = "ml/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					ramp:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+							@units = "ml/min^2"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					tolerance:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+							@units = "ml/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+							@start = 0
+							@units = "s"
+					
+		
+			massflow_contr2:NXsensor
+				@NX_class = NXsensor
+				name:NX_CHAR = "massflow_contr2"
+				measurement:NX_CHAR = "flowrate"
+					@secop_importance:NX_INT32 = 40
+					@secop_key:NX_CHAR = "PLACEHOLDER"
+					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				model:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
+				description:NX_CHAR = "A simulated massflow controller "
+			
+			
+				value_log:NXlog
+					@NX_class = NXlog
+					value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+						@units = "ml/min"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+						@start = 0
+						@units = "s"
+				
+				parameters:NXcollection
+					target:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+							@units = "ml/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					ramp:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+							@units = "ml/min^2"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					tolerance:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+							@units = "ml/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+							@start = 0
+							@units = "s"
+					
+		
+			massflow_contr3:NXsensor
+				@NX_class = NXsensor
+				name:NX_CHAR = "massflow_contr3"
+				measurement:NX_CHAR = "flowrate"
+					@secop_importance:NX_INT32 = 40
+					@secop_key:NX_CHAR = "PLACEHOLDER"
+					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				model:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
+				description:NX_CHAR = "A simulated massflow controller "
+			
+			
+				value_log:NXlog
+					@NX_class = NXlog
+					value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+						@units = "ml/min"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+						@start = 0
+						@units = "s"
+				
+				parameters:NXcollection
+					target:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+							@units = "ml/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					ramp:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+							@units = "ml/min^2"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					tolerance:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+							@units = "ml/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+							@start = 0
+							@units = "s"
+					
+		
+			backpressure_contr1:NXsensor
+				@NX_class = NXsensor
+				name:NX_CHAR = "backpressure_contr1"
+				measurement:NX_CHAR = "pressure"
+					@secop_importance:NX_INT32 = 40
+					@secop_key:NX_CHAR = "PLACEHOLDER"
+					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				model:NX_CHAR = "frappy_HZB.pressure_controller.PressureController"
+				description:NX_CHAR = "A simulated pressure controller "
+			
+			
+				value_log:NXlog
+					@NX_class = NXlog
+					value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+						@units = "mbar"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+						@start = 0
+						@units = "s"
+				
+				parameters:NXcollection
+					target:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+							@units = "mbar"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					ramp:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+							@units = "mbar/min"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					tolerance:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+							@units = "mbar"
+							@type = "double"
+						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+							@start = 0
+							@units = "s"
+					
+
+		reactor_cell:NXenvironment
+			@NX_class = NXenvironment
+			name:NX_CHAR = "reactor_cell"
+			short_name:NX_CHAR = "reactor_cell"
+			type:NX_CHAR = "FRAPPY - The Python Framework for SECoP (2021.02)"
+			description:NX_CHAR = "Reactor CellCollection of functionalities needed for the temperature at the sample position and for the readout of pressures directly before and after the reactor cell."
+		
+		
+			temperature_reg:NXsensor
+				@NX_class = NXsensor
+				name:NX_CHAR = "temperature_reg"
+				measurement:NX_CHAR = "temperature_regulation"
+					@secop_importance:NX_INT32 = 40
+					@secop_key:NX_CHAR = "PLACEHOLDER"
+					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				model:NX_CHAR = "frappy_HZB.temp_reg.TemperatureController"
+				description:NX_CHAR = "A simulated temperature controller "
+			
+			
+				value_log:NXlog
+					@NX_class = NXlog
+					value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+						@units = "K"
+						@type = "double"
+					time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+						@start = 0
+						@units = "s"
+				
+				parameters:NXcollection
+					target:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+							@units = "K"
+							@type = "double"
+						time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					ramp:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+							@units = "K/min"
+							@type = "double"
+						time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+							@start = 0
+							@units = "s"
+					
+			
+					tolerance:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+							@units = "K"
+							@type = "double"
+						time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+							@start = 0
+							@units = "s"
+					
+		
+			temperature_sam:NXsensor
+				@NX_class = NXsensor
+				name:NX_CHAR = "temperature_sam"
+				measurement:NX_CHAR = "temperature"
+					@secop_importance:NX_INT32 = 40
+					@secop_key:NX_CHAR = "PLACEHOLDER"
+					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				model:NX_CHAR = "frappy_HZB.temp_reg.TemperatureSensor"
+				description:NX_CHAR = "A simulated Temperature Sensor "
+			
+			
+				value_log:NXlog
+					@NX_class = NXlog
+					value:NX_FLOAT64 = reactor_cell-temperature_sam-value
+						@units = "K"
+						@type = "double"
+					time:NX_FLOAT64 = reactor_cell-temperature_sam-value-timestamp
+						@start = 0
+						@units = "s"
+				
+				parameters:NXcollection
+					heat_flux:NXlog
+						@NX_class = NXlog
+						value:NX_FLOAT64 = reactor_cell-temperature_sam-value
+							@type = "double"
+						time:NX_FLOAT64 = reactor_cell-temperature_sam-value-timestamp
+							@start = 0
+							@units = "s"
+					
