@@ -1,4 +1,4 @@
-secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd@nexus-struct
+secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd@v0.5
 bluesky
 databroker[all]==2.0.0b46
 mlzlog
@@ -7,3 +7,9 @@ ophyd
 matplotlib
 prettyprint
 numpy
+punx
+requests
+h5py
+lxml
+PyQt5 
+pyRestTable

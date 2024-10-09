@@ -14,15 +14,6 @@ entry:NXentry
 			@NX_class = "NXenvironment"
 			name:NX_CHAR = "TODO"
 
-		flowrate:NXlog
-			@NX_class = NXlog
-			value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
-				@units = "ml/min"
-				@type = "double"
-			time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
-				@start = 0
-				@units = "s"
-
 		pressure:NXlog
 			@NX_class = NXlog
 			value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
@@ -50,9 +41,8 @@ entry:NXentry
 				@start = 0
 				@units = "s"
 
-	sample_environment:NXsample
-		@NX_class = "NXsample"
-		type:NX_CHAR = "sample environment"
+	sample_environment:NXcollection
+		@NX_class = "NXcollection"
 
 		gas_dosing:NXenvironment
 			@NX_class = NXenvironment
@@ -60,15 +50,12 @@ entry:NXentry
 			short_name:NX_CHAR = "gas_dosing"
 			type:NX_CHAR = "FRAPPY - The Python Framework for SECoP (2021.02)"
 			description:NX_CHAR = "Gas dosingGas dosing Node, with simulated hardware"
+			secop_describe_message:NX_CHAR = "{'modules': {'massflow_contr1': {'accessibles': {'value': {'description': 'Mass flow of gas', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 1000.0, 'type': 'double'}, 'readonly': True}, 'status': {'description': 'current status of the module', 'datainfo': {'type': 'tuple', 'members': [{'type': 'enum', 'members': {'IDLE': 100, 'WARN': 200, 'BUSY': 300, 'ERROR': 400}}, {'type': 'string'}]}, 'readonly': True}, 'target': {'description': 'Desired mass flow of gas', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 200.0, 'type': 'double'}, 'readonly': False}, 'stop': {'description': 'Stop ramping the setpoint\n\nby setting the current setpoint as new target', 'datainfo': {'type': 'command'}}, 'ramp': {'description': 'desired ramp speed for gas flow of gas', 'datainfo': {'unit': 'ml/min^2', 'min': 0.0, 'max': 200.0, 'type': 'double'}, 'readonly': False}, '_gastype': {'description': 'chemical formula of gas type handled by flow controller', 'datainfo': {'maxchars': 50, 'type': 'string'}, 'readonly': True}, '_tolerance': {'description': 'flow range for stability checking', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 100.0, 'type': 'double'}, 'readonly': False}, '_test_cmd': {'description': 'testing with ophyd secop integration', 'datainfo': {'type': 'command', 'argument': {'type': 'struct', 'members': {'name': {'type': 'string'}, 'id': {'min': 0, 'max': 1000, 'type': 'int'}, 'sort': {'type': 'bool'}}}, 'result': {'min': -16777216, 'max': 16777216, 'type': 'int'}}}}, 'group': 'massflow', 'description': 'A simulated massflow controller ', 'implementation': 'frappy_HZB.massflow_controller.MassflowController', 'interface_classes': ['Drivable'], 'features': []}, 'massflow_contr2': {'accessibles': {'value': {'description': 'Mass flow of gas', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 1000.0, 'type': 'double'}, 'readonly': True}, 'status': {'description': 'current status of the module', 'datainfo': {'type': 'tuple', 'members': [{'type': 'enum', 'members': {'IDLE': 100, 'WARN': 200, 'BUSY': 300, 'ERROR': 400}}, {'type': 'string'}]}, 'readonly': True}, 'target': {'description': 'Desired mass flow of gas', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 200.0, 'type': 'double'}, 'readonly': False}, 'stop': {'description': 'Stop ramping the setpoint\n\nby setting the current setpoint as new target', 'datainfo': {'type': 'command'}}, 'ramp': {'description': 'desired ramp speed for gas flow of gas', 'datainfo': {'unit': 'ml/min^2', 'min': 0.0, 'max': 200.0, 'type': 'double'}, 'readonly': False}, '_gastype': {'description': 'chemical formula of gas type handled by flow controller', 'datainfo': {'maxchars': 50, 'type': 'string'}, 'readonly': True}, '_tolerance': {'description': 'flow range for stability checking', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 100.0, 'type': 'double'}, 'readonly': False}, '_test_cmd': {'description': 'testing with ophyd secop integration', 'datainfo': {'type': 'command', 'argument': {'type': 'struct', 'members': {'name': {'type': 'string'}, 'id': {'min': 0, 'max': 1000, 'type': 'int'}, 'sort': {'type': 'bool'}}}, 'result': {'min': -16777216, 'max': 16777216, 'type': 'int'}}}}, 'group': 'massflow', 'description': 'A simulated massflow controller ', 'implementation': 'frappy_HZB.massflow_controller.MassflowController', 'interface_classes': ['Drivable'], 'features': []}, 'massflow_contr3': {'accessibles': {'value': {'description': 'Mass flow of gas', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 1000.0, 'type': 'double'}, 'readonly': True}, 'status': {'description': 'current status of the module', 'datainfo': {'type': 'tuple', 'members': [{'type': 'enum', 'members': {'IDLE': 100, 'WARN': 200, 'BUSY': 300, 'ERROR': 400}}, {'type': 'string'}]}, 'readonly': True}, 'target': {'description': 'Desired mass flow of gas', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 200.0, 'type': 'double'}, 'readonly': False}, 'stop': {'description': 'Stop ramping the setpoint\n\nby setting the current setpoint as new target', 'datainfo': {'type': 'command'}}, 'ramp': {'description': 'desired ramp speed for gas flow of gas', 'datainfo': {'unit': 'ml/min^2', 'min': 0.0, 'max': 200.0, 'type': 'double'}, 'readonly': False}, '_gastype': {'description': 'chemical formula of gas type handled by flow controller', 'datainfo': {'maxchars': 50, 'type': 'string'}, 'readonly': True}, '_tolerance': {'description': 'flow range for stability checking', 'datainfo': {'unit': 'ml/min', 'min': 0.0, 'max': 100.0, 'type': 'double'}, 'readonly': False}, '_test_cmd': {'description': 'testing with ophyd secop integration', 'datainfo': {'type': 'command', 'argument': {'type': 'struct', 'members': {'name': {'type': 'string'}, 'id': {'min': 0, 'max': 1000, 'type': 'int'}, 'sort': {'type': 'bool'}}}, 'result': {'min': -16777216, 'max': 16777216, 'type': 'int'}}}}, 'group': 'massflow', 'description': 'A simulated massflow controller ', 'implementation': 'frappy_HZB.massflow_controller.MassflowController', 'interface_classes': ['Drivable'], 'features': []}, 'backpressure_contr1': {'accessibles': {'value': {'description': 'back pressure reactor section', 'datainfo': {'unit': 'mbar', 'min': 0.0, 'max': 5000.0, 'type': 'double'}, 'readonly': True}, 'status': {'description': 'current status of the module', 'datainfo': {'type': 'tuple', 'members': [{'type': 'enum', 'members': {'IDLE': 100, 'WARN': 200, 'BUSY': 300, 'ERROR': 400}}, {'type': 'string'}]}, 'readonly': True}, 'target': {'description': 'Desired back pressure', 'datainfo': {'unit': 'mbar', 'min': 0.0, 'max': 5000.0, 'type': 'double'}, 'readonly': False}, 'stop': {'description': 'Stop ramping the setpoint\n\nby setting the current setpoint as new target', 'datainfo': {'type': 'command'}}, 'ramp': {'description': 'desired ramp ', 'datainfo': {'unit': 'mbar/min', 'min': 0.0, 'max': 1000.0, 'type': 'double'}, 'readonly': False}, '_tolerance': {'description': 'pressure range for stability checking', 'datainfo': {'unit': 'mbar', 'min': 0.0, 'max': 100.0, 'type': 'double'}, 'readonly': False}}, 'group': 'pressure', 'description': 'A simulated pressure controller ', 'meaning': {'key': 'PLACEHOLDER', 'link': 'https://w3id.org/nfdi4cat/PLACEHOLDER', 'function': 'pressure', 'importance': 40, 'belongs_to': 'sample'}, 'implementation': 'frappy_HZB.pressure_controller.PressureController', 'interface_classes': ['Drivable'], 'features': []}}, 'equipment_id': 'gas_dosing', 'firmware': 'FRAPPY - The Python Framework for SECoP', 'version': '2021.02', 'description': 'Gas dosing\n\nGas dosing Node, with simulated hardware', 'interface': 'tcp://10800'}"
 		
 		
 			massflow_contr1:NXsensor
 				@NX_class = NXsensor
-				name:NX_CHAR = "massflow_contr1"
-				measurement:NX_CHAR = "flowrate"
-					@secop_importance:NX_INT32 = 40
-					@secop_key:NX_CHAR = "PLACEHOLDER"
-					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				name:NX_CHAR = "massflow_contr1" 
 				model:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
 				description:NX_CHAR = "A simulated massflow controller "
 			
@@ -83,43 +70,40 @@ entry:NXentry
 						@units = "s"
 				
 				parameters:NXcollection
+					@NX_class = NXcollection
 					target:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr1-target
 							@units = "ml/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr1-target-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					ramp:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr1-ramp
 							@units = "ml/min^2"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr1-ramp-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr1-tolerance
 							@units = "ml/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr1-tolerance-timestamp
 							@start = 0
 							@units = "s"
 					
 		
 			massflow_contr2:NXsensor
 				@NX_class = NXsensor
-				name:NX_CHAR = "massflow_contr2"
-				measurement:NX_CHAR = "flowrate"
-					@secop_importance:NX_INT32 = 40
-					@secop_key:NX_CHAR = "PLACEHOLDER"
-					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				name:NX_CHAR = "massflow_contr2" 
 				model:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
 				description:NX_CHAR = "A simulated massflow controller "
 			
@@ -134,43 +118,40 @@ entry:NXentry
 						@units = "s"
 				
 				parameters:NXcollection
+					@NX_class = NXcollection
 					target:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr2-target
 							@units = "ml/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr2-target-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					ramp:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr2-ramp
 							@units = "ml/min^2"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr2-ramp-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr2-tolerance
 							@units = "ml/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr2-tolerance-timestamp
 							@start = 0
 							@units = "s"
 					
 		
 			massflow_contr3:NXsensor
 				@NX_class = NXsensor
-				name:NX_CHAR = "massflow_contr3"
-				measurement:NX_CHAR = "flowrate"
-					@secop_importance:NX_INT32 = 40
-					@secop_key:NX_CHAR = "PLACEHOLDER"
-					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+				name:NX_CHAR = "massflow_contr3" 
 				model:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
 				description:NX_CHAR = "A simulated massflow controller "
 			
@@ -185,32 +166,33 @@ entry:NXentry
 						@units = "s"
 				
 				parameters:NXcollection
+					@NX_class = NXcollection
 					target:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr3-target
 							@units = "ml/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr3-target-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					ramp:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr3-ramp
 							@units = "ml/min^2"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr3-ramp-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
+						value:NX_FLOAT64 = gas_dosing-massflow_contr3-tolerance
 							@units = "ml/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-massflow_contr3-tolerance-timestamp
 							@start = 0
 							@units = "s"
 					
@@ -219,9 +201,9 @@ entry:NXentry
 				@NX_class = NXsensor
 				name:NX_CHAR = "backpressure_contr1"
 				measurement:NX_CHAR = "pressure"
-					@secop_importance:NX_INT32 = 40
-					@secop_key:NX_CHAR = "PLACEHOLDER"
-					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+					@secop_meaning_importance = 40
+					@long_name = "PLACEHOLDER"
+					@PID = "https://w3id.org/nfdi4cat/PLACEHOLDER" 
 				model:NX_CHAR = "frappy_HZB.pressure_controller.PressureController"
 				description:NX_CHAR = "A simulated pressure controller "
 			
@@ -236,32 +218,33 @@ entry:NXentry
 						@units = "s"
 				
 				parameters:NXcollection
+					@NX_class = NXcollection
 					target:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-target
 							@units = "mbar"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-target-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					ramp:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-ramp
 							@units = "mbar/min"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-ramp-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
+						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-tolerance
 							@units = "mbar"
 							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
+						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-tolerance-timestamp
 							@start = 0
 							@units = "s"
 					
@@ -272,15 +255,16 @@ entry:NXentry
 			short_name:NX_CHAR = "reactor_cell"
 			type:NX_CHAR = "FRAPPY - The Python Framework for SECoP (2021.02)"
 			description:NX_CHAR = "Reactor CellCollection of functionalities needed for the temperature at the sample position and for the readout of pressures directly before and after the reactor cell."
+			secop_describe_message:NX_CHAR = "{'modules': {'temperature_reg': {'accessibles': {'value': {'description': 'Heater temperature at reactor cell', 'datainfo': {'unit': 'K', 'min': 0.0, 'max': 5000.0, 'type': 'double'}, 'readonly': True}, 'status': {'description': 'current status of the module', 'datainfo': {'type': 'tuple', 'members': [{'type': 'enum', 'members': {'IDLE': 100, 'WARN': 200, 'BUSY': 300, 'ERROR': 400}}, {'type': 'string'}]}, 'readonly': True}, 'target': {'description': 'desired heater temperature at reactor cell', 'datainfo': {'unit': 'K', 'min': 0.0, 'max': 5000.0, 'type': 'double'}, 'readonly': False}, 'stop': {'description': 'Stop ramping the setpoint\n\nby setting the current setpoint as new target', 'datainfo': {'type': 'command'}}, 'ramp': {'description': 'desired ramp speed for the heater temperature', 'datainfo': {'unit': 'K/min', 'min': 0.0, 'max': 1000.0, 'type': 'double'}, 'readonly': False}, '_tolerance': {'description': 'Temperature range for stability checking', 'datainfo': {'unit': 'K', 'min': 0.0, 'max': 100.0, 'type': 'double'}, 'readonly': False}}, 'group': 'temp control', 'description': 'A simulated temperature controller ', 'meaning': {'key': 'PLACEHOLDER', 'link': 'https://w3id.org/nfdi4cat/PLACEHOLDER', 'function': 'temperature_regulation', 'importance': 40, 'belongs_to': 'sample'}, 'implementation': 'frappy_HZB.temp_reg.TemperatureController', 'interface_classes': ['Drivable'], 'features': []}, 'temperature_sam': {'accessibles': {'value': {'description': 'Heater temperature at reactor cell', 'datainfo': {'unit': 'K', 'min': 0.0, 'max': 5000.0, 'type': 'double'}, 'readonly': True}, 'status': {'description': 'current status of the module', 'datainfo': {'type': 'tuple', 'members': [{'type': 'enum', 'members': {'IDLE': 100, 'WARN': 200, 'ERROR': 400}}, {'type': 'string'}]}, 'readonly': True}, '_heat_flux': {'description': 'Constant for simulation of heat flux', 'datainfo': {'min': 0.0, 'max': 20.0, 'type': 'double'}, 'readonly': False}, 'stop': {'description': 'Stop ramping the setpoint\n\nby setting the current setpoint as new target', 'datainfo': {'type': 'command'}}}, 'group': 'temp_sens', 'description': 'A simulated Temperature Sensor ', 'meaning': {'key': 'PLACEHOLDER', 'link': 'https://w3id.org/nfdi4cat/PLACEHOLDER', 'function': 'temperature', 'importance': 40, 'belongs_to': 'sample'}, 'implementation': 'frappy_HZB.temp_reg.TemperatureSensor', 'interface_classes': ['Readable'], 'features': []}}, 'equipment_id': 'reactor_cell', 'firmware': 'FRAPPY - The Python Framework for SECoP', 'version': '2021.02', 'description': 'Reactor Cell\n\nCollection of functionalities needed for the temperature at the sample position and for the readout of pressures directly before and after the reactor cell.', 'interface': 'tcp://10801'}"
 		
 		
 			temperature_reg:NXsensor
 				@NX_class = NXsensor
 				name:NX_CHAR = "temperature_reg"
 				measurement:NX_CHAR = "temperature_regulation"
-					@secop_importance:NX_INT32 = 40
-					@secop_key:NX_CHAR = "PLACEHOLDER"
-					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+					@secop_meaning_importance = 40
+					@long_name = "PLACEHOLDER"
+					@PID = "https://w3id.org/nfdi4cat/PLACEHOLDER" 
 				model:NX_CHAR = "frappy_HZB.temp_reg.TemperatureController"
 				description:NX_CHAR = "A simulated temperature controller "
 			
@@ -295,32 +279,33 @@ entry:NXentry
 						@units = "s"
 				
 				parameters:NXcollection
+					@NX_class = NXcollection
 					target:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+						value:NX_FLOAT64 = reactor_cell-temperature_reg-target
 							@units = "K"
 							@type = "double"
-						time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+						time:NX_FLOAT64 = reactor_cell-temperature_reg-target-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					ramp:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+						value:NX_FLOAT64 = reactor_cell-temperature_reg-ramp
 							@units = "K/min"
 							@type = "double"
-						time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+						time:NX_FLOAT64 = reactor_cell-temperature_reg-ramp-timestamp
 							@start = 0
 							@units = "s"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = reactor_cell-temperature_reg-value
+						value:NX_FLOAT64 = reactor_cell-temperature_reg-tolerance
 							@units = "K"
 							@type = "double"
-						time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
+						time:NX_FLOAT64 = reactor_cell-temperature_reg-tolerance-timestamp
 							@start = 0
 							@units = "s"
 					
@@ -329,9 +314,9 @@ entry:NXentry
 				@NX_class = NXsensor
 				name:NX_CHAR = "temperature_sam"
 				measurement:NX_CHAR = "temperature"
-					@secop_importance:NX_INT32 = 40
-					@secop_key:NX_CHAR = "PLACEHOLDER"
-					@secop_link:NX_CHAR = "https://w3id.org/nfdi4cat/PLACEHOLDER"
+					@secop_meaning_importance = 40
+					@long_name = "PLACEHOLDER"
+					@PID = "https://w3id.org/nfdi4cat/PLACEHOLDER" 
 				model:NX_CHAR = "frappy_HZB.temp_reg.TemperatureSensor"
 				description:NX_CHAR = "A simulated Temperature Sensor "
 			
@@ -346,11 +331,12 @@ entry:NXentry
 						@units = "s"
 				
 				parameters:NXcollection
+					@NX_class = NXcollection
 					heat_flux:NXlog
 						@NX_class = NXlog
-						value:NX_FLOAT64 = reactor_cell-temperature_sam-value
+						value:NX_FLOAT64 = reactor_cell-temperature_sam-heat_flux
 							@type = "double"
-						time:NX_FLOAT64 = reactor_cell-temperature_sam-value-timestamp
+						time:NX_FLOAT64 = reactor_cell-temperature_sam-heat_flux-timestamp
 							@start = 0
 							@units = "s"
 					
