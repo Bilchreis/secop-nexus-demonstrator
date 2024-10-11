@@ -6,40 +6,14 @@ entry:NXentry
 		@NX_class = "NXsample"
 		type:NX_CHAR = "sample"
 
-		gas_dosing:NXenvironment
-			@NX_class = "NXenvironment"
-			name:NX_CHAR = "TODO"
+		pressure_env: --> /entry/sample_environment/gas_dosing
+		pressure: --> /entry/sample_environment/gas_dosing/backpressure_contr1/value_log
 
-		reactor_cell:NXenvironment
-			@NX_class = "NXenvironment"
-			name:NX_CHAR = "TODO"
+		temperature_regulation_env: --> /entry/sample_environment/reactor_cell
+		temperature_regulation: --> /entry/sample_environment/reactor_cell/temperature_reg/value_log
 
-		pressure:NXlog
-			@NX_class = NXlog
-			value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
-				@units = "mbar"
-				@type = "double"
-			time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
-				@start = 0
-				@units = "s"
-
-		temperature_regulation:NXlog
-			@NX_class = NXlog
-			value:NX_FLOAT64 = reactor_cell-temperature_reg-value
-				@units = "K"
-				@type = "double"
-			time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
-				@start = 0
-				@units = "s"
-
-		temperature:NXlog
-			@NX_class = NXlog
-			value:NX_FLOAT64 = reactor_cell-temperature_sam-value
-				@units = "K"
-				@type = "double"
-			time:NX_FLOAT64 = reactor_cell-temperature_sam-value-timestamp
-				@start = 0
-				@units = "s"
+		temperature_env: --> /entry/sample_environment/reactor_cell
+		temperature: --> /entry/sample_environment/reactor_cell/temperature_sam/value_log
 
 	sample_environment:NXcollection
 		@NX_class = "NXcollection"
@@ -62,43 +36,79 @@ entry:NXentry
 			
 				value_log:NXlog
 					@NX_class = NXlog
+					@default = default_data
 					value:NX_FLOAT64 = gas_dosing-massflow_contr1-value
 						@units = "ml/min"
 						@type = "double"
 					time:NX_FLOAT64 = gas_dosing-massflow_contr1-value-timestamp
 						@start = 0
 						@units = "s"
+					description:NX_CHAR = "Mass flow of gas"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "value"
+						@axes = "time"
+						value: -->  /entry/sample_environment/gas_dosing/massflow_contr1/value_log/value
+						time: -->      /entry/sample_environment/gas_dosing/massflow_contr1/value_log/time
+						title:NX_CHAR = "Mass flow of gas"
 				
-				parameters:NXcollection
-					@NX_class = NXcollection
-					target:NXlog
-						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr1-target
-							@units = "ml/min"
-							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr1-target-timestamp
-							@start = 0
-							@units = "s"
-					
 			
+				target_log:NXlog
+					@NX_class = NXlog
+					@default = default_data
+					value:NX_FLOAT64 = gas_dosing-massflow_contr1-target
+						@units = "ml/min"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-massflow_contr1-target-timestamp
+						@start = 0
+						@units = "s"
+					description:NX_CHAR = "Desired mass flow of gas"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "target"
+						@axes = "time"
+						target: -->  /entry/sample_environment/gas_dosing/massflow_contr1/target_log/value
+						time: -->      /entry/sample_environment/gas_dosing/massflow_contr1/target_log/time
+						title:NX_CHAR = "Desired mass flow of gas"
+				
+				secop_parameters:NXcollection
+					@NX_class = NXcollection
 					ramp:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-massflow_contr1-ramp
 							@units = "ml/min^2"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-massflow_contr1-ramp-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "desired ramp speed for gas flow of gas"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "ramp"
+							@axes = "time"
+							ramp: -->  /entry/sample_environment/gas_dosing/massflow_contr1/secop_parameters/ramp/value
+							time: -->      /entry/sample_environment/gas_dosing/massflow_contr1/secop_parameters/ramp/time
+							title:NX_CHAR = "desired ramp speed for gas flow of gas"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-massflow_contr1-tolerance
 							@units = "ml/min"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-massflow_contr1-tolerance-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "flow range for stability checking"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "tolerance"
+							@axes = "time"
+							tolerance: -->  /entry/sample_environment/gas_dosing/massflow_contr1/secop_parameters/tolerance/value
+							time: -->      /entry/sample_environment/gas_dosing/massflow_contr1/secop_parameters/tolerance/time
+							title:NX_CHAR = "flow range for stability checking"
 					
 		
 			massflow_contr2:NXsensor
@@ -110,43 +120,79 @@ entry:NXentry
 			
 				value_log:NXlog
 					@NX_class = NXlog
+					@default = default_data
 					value:NX_FLOAT64 = gas_dosing-massflow_contr2-value
 						@units = "ml/min"
 						@type = "double"
 					time:NX_FLOAT64 = gas_dosing-massflow_contr2-value-timestamp
 						@start = 0
 						@units = "s"
+					description:NX_CHAR = "Mass flow of gas"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "value"
+						@axes = "time"
+						value: -->  /entry/sample_environment/gas_dosing/massflow_contr2/value_log/value
+						time: -->      /entry/sample_environment/gas_dosing/massflow_contr2/value_log/time
+						title:NX_CHAR = "Mass flow of gas"
 				
-				parameters:NXcollection
-					@NX_class = NXcollection
-					target:NXlog
-						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr2-target
-							@units = "ml/min"
-							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr2-target-timestamp
-							@start = 0
-							@units = "s"
-					
 			
+				target_log:NXlog
+					@NX_class = NXlog
+					@default = default_data
+					value:NX_FLOAT64 = gas_dosing-massflow_contr2-target
+						@units = "ml/min"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-massflow_contr2-target-timestamp
+						@start = 0
+						@units = "s"
+					description:NX_CHAR = "Desired mass flow of gas"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "target"
+						@axes = "time"
+						target: -->  /entry/sample_environment/gas_dosing/massflow_contr2/target_log/value
+						time: -->      /entry/sample_environment/gas_dosing/massflow_contr2/target_log/time
+						title:NX_CHAR = "Desired mass flow of gas"
+				
+				secop_parameters:NXcollection
+					@NX_class = NXcollection
 					ramp:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-massflow_contr2-ramp
 							@units = "ml/min^2"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-massflow_contr2-ramp-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "desired ramp speed for gas flow of gas"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "ramp"
+							@axes = "time"
+							ramp: -->  /entry/sample_environment/gas_dosing/massflow_contr2/secop_parameters/ramp/value
+							time: -->      /entry/sample_environment/gas_dosing/massflow_contr2/secop_parameters/ramp/time
+							title:NX_CHAR = "desired ramp speed for gas flow of gas"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-massflow_contr2-tolerance
 							@units = "ml/min"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-massflow_contr2-tolerance-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "flow range for stability checking"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "tolerance"
+							@axes = "time"
+							tolerance: -->  /entry/sample_environment/gas_dosing/massflow_contr2/secop_parameters/tolerance/value
+							time: -->      /entry/sample_environment/gas_dosing/massflow_contr2/secop_parameters/tolerance/time
+							title:NX_CHAR = "flow range for stability checking"
 					
 		
 			massflow_contr3:NXsensor
@@ -158,43 +204,79 @@ entry:NXentry
 			
 				value_log:NXlog
 					@NX_class = NXlog
+					@default = default_data
 					value:NX_FLOAT64 = gas_dosing-massflow_contr3-value
 						@units = "ml/min"
 						@type = "double"
 					time:NX_FLOAT64 = gas_dosing-massflow_contr3-value-timestamp
 						@start = 0
 						@units = "s"
+					description:NX_CHAR = "Mass flow of gas"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "value"
+						@axes = "time"
+						value: -->  /entry/sample_environment/gas_dosing/massflow_contr3/value_log/value
+						time: -->      /entry/sample_environment/gas_dosing/massflow_contr3/value_log/time
+						title:NX_CHAR = "Mass flow of gas"
 				
-				parameters:NXcollection
-					@NX_class = NXcollection
-					target:NXlog
-						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-massflow_contr3-target
-							@units = "ml/min"
-							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-massflow_contr3-target-timestamp
-							@start = 0
-							@units = "s"
-					
 			
+				target_log:NXlog
+					@NX_class = NXlog
+					@default = default_data
+					value:NX_FLOAT64 = gas_dosing-massflow_contr3-target
+						@units = "ml/min"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-massflow_contr3-target-timestamp
+						@start = 0
+						@units = "s"
+					description:NX_CHAR = "Desired mass flow of gas"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "target"
+						@axes = "time"
+						target: -->  /entry/sample_environment/gas_dosing/massflow_contr3/target_log/value
+						time: -->      /entry/sample_environment/gas_dosing/massflow_contr3/target_log/time
+						title:NX_CHAR = "Desired mass flow of gas"
+				
+				secop_parameters:NXcollection
+					@NX_class = NXcollection
 					ramp:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-massflow_contr3-ramp
 							@units = "ml/min^2"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-massflow_contr3-ramp-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "desired ramp speed for gas flow of gas"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "ramp"
+							@axes = "time"
+							ramp: -->  /entry/sample_environment/gas_dosing/massflow_contr3/secop_parameters/ramp/value
+							time: -->      /entry/sample_environment/gas_dosing/massflow_contr3/secop_parameters/ramp/time
+							title:NX_CHAR = "desired ramp speed for gas flow of gas"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-massflow_contr3-tolerance
 							@units = "ml/min"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-massflow_contr3-tolerance-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "flow range for stability checking"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "tolerance"
+							@axes = "time"
+							tolerance: -->  /entry/sample_environment/gas_dosing/massflow_contr3/secop_parameters/tolerance/value
+							time: -->      /entry/sample_environment/gas_dosing/massflow_contr3/secop_parameters/tolerance/time
+							title:NX_CHAR = "flow range for stability checking"
 					
 		
 			backpressure_contr1:NXsensor
@@ -210,43 +292,79 @@ entry:NXentry
 			
 				value_log:NXlog
 					@NX_class = NXlog
+					@default = default_data
 					value:NX_FLOAT64 = gas_dosing-backpressure_contr1-value
 						@units = "mbar"
 						@type = "double"
 					time:NX_FLOAT64 = gas_dosing-backpressure_contr1-value-timestamp
 						@start = 0
 						@units = "s"
+					description:NX_CHAR = "back pressure reactor section"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "value"
+						@axes = "time"
+						value: -->  /entry/sample_environment/gas_dosing/backpressure_contr1/value_log/value
+						time: -->      /entry/sample_environment/gas_dosing/backpressure_contr1/value_log/time
+						title:NX_CHAR = "back pressure reactor section"
 				
-				parameters:NXcollection
-					@NX_class = NXcollection
-					target:NXlog
-						@NX_class = NXlog
-						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-target
-							@units = "mbar"
-							@type = "double"
-						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-target-timestamp
-							@start = 0
-							@units = "s"
-					
 			
+				target_log:NXlog
+					@NX_class = NXlog
+					@default = default_data
+					value:NX_FLOAT64 = gas_dosing-backpressure_contr1-target
+						@units = "mbar"
+						@type = "double"
+					time:NX_FLOAT64 = gas_dosing-backpressure_contr1-target-timestamp
+						@start = 0
+						@units = "s"
+					description:NX_CHAR = "Desired back pressure"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "target"
+						@axes = "time"
+						target: -->  /entry/sample_environment/gas_dosing/backpressure_contr1/target_log/value
+						time: -->      /entry/sample_environment/gas_dosing/backpressure_contr1/target_log/time
+						title:NX_CHAR = "Desired back pressure"
+				
+				secop_parameters:NXcollection
+					@NX_class = NXcollection
 					ramp:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-ramp
 							@units = "mbar/min"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-ramp-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "desired ramp "
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "ramp"
+							@axes = "time"
+							ramp: -->  /entry/sample_environment/gas_dosing/backpressure_contr1/secop_parameters/ramp/value
+							time: -->      /entry/sample_environment/gas_dosing/backpressure_contr1/secop_parameters/ramp/time
+							title:NX_CHAR = "desired ramp "
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = gas_dosing-backpressure_contr1-tolerance
 							@units = "mbar"
 							@type = "double"
 						time:NX_FLOAT64 = gas_dosing-backpressure_contr1-tolerance-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "pressure range for stability checking"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "tolerance"
+							@axes = "time"
+							tolerance: -->  /entry/sample_environment/gas_dosing/backpressure_contr1/secop_parameters/tolerance/value
+							time: -->      /entry/sample_environment/gas_dosing/backpressure_contr1/secop_parameters/tolerance/time
+							title:NX_CHAR = "pressure range for stability checking"
 					
 
 		reactor_cell:NXenvironment
@@ -271,43 +389,79 @@ entry:NXentry
 			
 				value_log:NXlog
 					@NX_class = NXlog
+					@default = default_data
 					value:NX_FLOAT64 = reactor_cell-temperature_reg-value
 						@units = "K"
 						@type = "double"
 					time:NX_FLOAT64 = reactor_cell-temperature_reg-value-timestamp
 						@start = 0
 						@units = "s"
+					description:NX_CHAR = "Heater temperature at reactor cell"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "value"
+						@axes = "time"
+						value: -->  /entry/sample_environment/reactor_cell/temperature_reg/value_log/value
+						time: -->      /entry/sample_environment/reactor_cell/temperature_reg/value_log/time
+						title:NX_CHAR = "Heater temperature at reactor cell"
 				
-				parameters:NXcollection
-					@NX_class = NXcollection
-					target:NXlog
-						@NX_class = NXlog
-						value:NX_FLOAT64 = reactor_cell-temperature_reg-target
-							@units = "K"
-							@type = "double"
-						time:NX_FLOAT64 = reactor_cell-temperature_reg-target-timestamp
-							@start = 0
-							@units = "s"
-					
 			
+				target_log:NXlog
+					@NX_class = NXlog
+					@default = default_data
+					value:NX_FLOAT64 = reactor_cell-temperature_reg-target
+						@units = "K"
+						@type = "double"
+					time:NX_FLOAT64 = reactor_cell-temperature_reg-target-timestamp
+						@start = 0
+						@units = "s"
+					description:NX_CHAR = "desired heater temperature at reactor cell"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "target"
+						@axes = "time"
+						target: -->  /entry/sample_environment/reactor_cell/temperature_reg/target_log/value
+						time: -->      /entry/sample_environment/reactor_cell/temperature_reg/target_log/time
+						title:NX_CHAR = "desired heater temperature at reactor cell"
+				
+				secop_parameters:NXcollection
+					@NX_class = NXcollection
 					ramp:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = reactor_cell-temperature_reg-ramp
 							@units = "K/min"
 							@type = "double"
 						time:NX_FLOAT64 = reactor_cell-temperature_reg-ramp-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "desired ramp speed for the heater temperature"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "ramp"
+							@axes = "time"
+							ramp: -->  /entry/sample_environment/reactor_cell/temperature_reg/secop_parameters/ramp/value
+							time: -->      /entry/sample_environment/reactor_cell/temperature_reg/secop_parameters/ramp/time
+							title:NX_CHAR = "desired ramp speed for the heater temperature"
 					
 			
 					tolerance:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = reactor_cell-temperature_reg-tolerance
 							@units = "K"
 							@type = "double"
 						time:NX_FLOAT64 = reactor_cell-temperature_reg-tolerance-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "Temperature range for stability checking"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "tolerance"
+							@axes = "time"
+							tolerance: -->  /entry/sample_environment/reactor_cell/temperature_reg/secop_parameters/tolerance/value
+							time: -->      /entry/sample_environment/reactor_cell/temperature_reg/secop_parameters/tolerance/time
+							title:NX_CHAR = "Temperature range for stability checking"
 					
 		
 			temperature_sam:NXsensor
@@ -323,20 +477,38 @@ entry:NXentry
 			
 				value_log:NXlog
 					@NX_class = NXlog
+					@default = default_data
 					value:NX_FLOAT64 = reactor_cell-temperature_sam-value
 						@units = "K"
 						@type = "double"
 					time:NX_FLOAT64 = reactor_cell-temperature_sam-value-timestamp
 						@start = 0
 						@units = "s"
+					description:NX_CHAR = "Heater temperature at reactor cell"
+					default_data:NXdata
+						@NX_class = "NXdata"
+						@signal = "value"
+						@axes = "time"
+						value: -->  /entry/sample_environment/reactor_cell/temperature_sam/value_log/value
+						time: -->      /entry/sample_environment/reactor_cell/temperature_sam/value_log/time
+						title:NX_CHAR = "Heater temperature at reactor cell"
 				
-				parameters:NXcollection
+				secop_parameters:NXcollection
 					@NX_class = NXcollection
 					heat_flux:NXlog
 						@NX_class = NXlog
+						@default = default_data
 						value:NX_FLOAT64 = reactor_cell-temperature_sam-heat_flux
 							@type = "double"
 						time:NX_FLOAT64 = reactor_cell-temperature_sam-heat_flux-timestamp
 							@start = 0
 							@units = "s"
+						description:NX_CHAR = "Constant for simulation of heat flux"
+						default_data:NXdata
+							@NX_class = "NXdata"
+							@signal = "heat_flux"
+							@axes = "time"
+							heat_flux: -->  /entry/sample_environment/reactor_cell/temperature_sam/secop_parameters/heat_flux/value
+							time: -->      /entry/sample_environment/reactor_cell/temperature_sam/secop_parameters/heat_flux/time
+							title:NX_CHAR = "Constant for simulation of heat flux"
 					
