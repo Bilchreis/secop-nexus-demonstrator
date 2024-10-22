@@ -42,8 +42,11 @@ services:
       environment:
           - TILED_SINGLE_USER_API_KEY=secret
       volumes:
-          - $PWD/tiled_config:/deploy/config:ro
-      image: registry.hzdr.de/hzb/bluesky/core/images/tiled:1.0.0
+        - '/etc/localtime:/etc/localtime:ro'
+        - '/etc/timezone:/etc/timezone:ro'
+        - ./data2:/storage/catalog:rw
+        - $PWD/tiled_config:/deploy/config:ro
+      image: registry.hzdr.de/hzb/bluesky/core/images/bluesky_container:v1.2.0
       command: tiled serve config /deploy/config/config.yml
 
 
