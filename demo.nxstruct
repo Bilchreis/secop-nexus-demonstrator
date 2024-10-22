@@ -110,6 +110,13 @@ entry:NXentry
 							time: -->      /entry/sample_environment/gas_dosing/massflow_contr1/secop_parameters/tolerance/time
 							title:NX_CHAR = "flow range for stability checking"
 					
+				secop_module_properties:NXcollection
+					@NX_class = NXcollection
+					group:NX_CHAR = "massflow"
+					description:NX_CHAR = "A simulated massflow controller "
+					implementation:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
+					interface_classes:NX_CHAR = "['Drivable']"
+					features:NX_CHAR = "[]"
 		
 			massflow_contr2:NXsensor
 				@NX_class = NXsensor
@@ -194,6 +201,13 @@ entry:NXentry
 							time: -->      /entry/sample_environment/gas_dosing/massflow_contr2/secop_parameters/tolerance/time
 							title:NX_CHAR = "flow range for stability checking"
 					
+				secop_module_properties:NXcollection
+					@NX_class = NXcollection
+					group:NX_CHAR = "massflow"
+					description:NX_CHAR = "A simulated massflow controller "
+					implementation:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
+					interface_classes:NX_CHAR = "['Drivable']"
+					features:NX_CHAR = "[]"
 		
 			massflow_contr3:NXsensor
 				@NX_class = NXsensor
@@ -278,6 +292,13 @@ entry:NXentry
 							time: -->      /entry/sample_environment/gas_dosing/massflow_contr3/secop_parameters/tolerance/time
 							title:NX_CHAR = "flow range for stability checking"
 					
+				secop_module_properties:NXcollection
+					@NX_class = NXcollection
+					group:NX_CHAR = "massflow"
+					description:NX_CHAR = "A simulated massflow controller "
+					implementation:NX_CHAR = "frappy_HZB.massflow_controller.MassflowController"
+					interface_classes:NX_CHAR = "['Drivable']"
+					features:NX_CHAR = "[]"
 		
 			backpressure_contr1:NXsensor
 				@NX_class = NXsensor
@@ -366,6 +387,14 @@ entry:NXentry
 							time: -->      /entry/sample_environment/gas_dosing/backpressure_contr1/secop_parameters/tolerance/time
 							title:NX_CHAR = "pressure range for stability checking"
 					
+				secop_module_properties:NXcollection
+					@NX_class = NXcollection
+					group:NX_CHAR = "pressure"
+					description:NX_CHAR = "A simulated pressure controller "
+					meaning:NX_CHAR = "{'key': 'PLACEHOLDER', 'link': 'https://w3id.org/nfdi4cat/PLACEHOLDER', 'function': 'pressure', 'importance': 40, 'belongs_to': 'sample'}"
+					implementation:NX_CHAR = "frappy_HZB.pressure_controller.PressureController"
+					interface_classes:NX_CHAR = "['Drivable']"
+					features:NX_CHAR = "[]"
 
 		reactor_cell:NXenvironment
 			@NX_class = NXenvironment
@@ -463,6 +492,14 @@ entry:NXentry
 							time: -->      /entry/sample_environment/reactor_cell/temperature_reg/secop_parameters/tolerance/time
 							title:NX_CHAR = "Temperature range for stability checking"
 					
+				secop_module_properties:NXcollection
+					@NX_class = NXcollection
+					group:NX_CHAR = "temp control"
+					description:NX_CHAR = "A simulated temperature controller "
+					meaning:NX_CHAR = "{'key': 'PLACEHOLDER', 'link': 'https://w3id.org/nfdi4cat/PLACEHOLDER', 'function': 'temperature_regulation', 'importance': 40, 'belongs_to': 'sample'}"
+					implementation:NX_CHAR = "frappy_HZB.temp_reg.TemperatureController"
+					interface_classes:NX_CHAR = "['Drivable']"
+					features:NX_CHAR = "[]"
 		
 			temperature_sam:NXsensor
 				@NX_class = NXsensor
@@ -512,3 +549,11 @@ entry:NXentry
 							time: -->      /entry/sample_environment/reactor_cell/temperature_sam/secop_parameters/heat_flux/time
 							title:NX_CHAR = "Constant for simulation of heat flux"
 					
+				secop_module_properties:NXcollection
+					@NX_class = NXcollection
+					group:NX_CHAR = "temp_sens"
+					description:NX_CHAR = "A simulated Temperature Sensor "
+					meaning:NX_CHAR = "{'key': 'PLACEHOLDER', 'link': 'https://w3id.org/nfdi4cat/PLACEHOLDER', 'function': 'temperature', 'importance': 40, 'belongs_to': 'sample'}"
+					implementation:NX_CHAR = "frappy_HZB.temp_reg.TemperatureSensor"
+					interface_classes:NX_CHAR = "['Readable']"
+					features:NX_CHAR = "[]"
