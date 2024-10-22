@@ -1,4 +1,6 @@
+setuptools>=61
 secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd@v0.5
+nexuscreatorpy @ git+https://codebase.helmholtz.cloud/hzb/research_data_management/nexuscreator
 bluesky
 databroker[all]==2.0.0b46
 mlzlog
