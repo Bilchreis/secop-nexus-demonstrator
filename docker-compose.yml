@@ -33,21 +33,25 @@ services:
         - "/etc/timezone:/etc/timezone:ro"  
       
 
+
+
   tiled:
-      depends_on:
-        mongodb:
-          condition: service_started
-      restart: always
-      network_mode: host
-      environment:
-          - TILED_SINGLE_USER_API_KEY=secret
-      volumes:
-        - '/etc/localtime:/etc/localtime:ro'
-        - '/etc/timezone:/etc/timezone:ro'
-        - ./data2:/storage/catalog:rw
-        - $PWD/tiled_config:/deploy/config:ro
-      image: registry.hzdr.de/hzb/bluesky/core/images/bluesky_container:v1.2.0
-      command: tiled serve config /deploy/config/config.yml
+    image: registry.hzdr.de/hzb/bluesky/tutorials/bluesky_training:latest
+    user: root:root
+    privileged: true
+    network_mode: host
+    container_name: tiled
+    stdin_open: true
+    tty: true
+    environment:
+        - TILED_SINGLE_USER_API_KEY="secret"
+    restart: always
+    volumes:
+        - $PWD/tiled_config:/opt/bluesky/deploy/config:ro
+        - ./data2:/opt/bluesky/storage:rw
+        - ./images:/home/epics/images:rw
+    command: /bin/bash -c 'tiled serve config /opt/bluesky/deploy/config/config.yml'
+
 
 
 
