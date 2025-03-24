@@ -44,7 +44,7 @@ services:
     stdin_open: true
     tty: true
     environment:
-        - TILED_SINGLE_USER_API_KEY="secret"
+        - TILED_SINGLE_USER_API_KEY=secret
     restart: always
     volumes:
         - $PWD/tiled_config:/opt/bluesky/deploy/config:ro

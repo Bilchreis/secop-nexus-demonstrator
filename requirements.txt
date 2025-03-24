@@ -1,10 +1,9 @@
 setuptools>=61
-secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd@no-struct
+secop-ophyd @ git+https://github.com/SampleEnvironment/secop-ophyd
 nexuscreatorpy @ git+https://codebase.helmholtz.cloud/peter.wegmann/nexuscreator@string-fixes
-bluesky
 tiled[client] @ git+https://github.com/bluesky/tiled@11f5f15a5f1b1ca1028afd8accf686f0edd51ccc
-bluesky @ git+https://github.com/bluesky/bluesky@ea61fb991f150c3c91ec62c65c1960f7ababfb87
-mlzlog
+bluesky @ git+https://github.com/genematx/bluesky.git@stackable-consolidators
+pip 
 ipykernel
 ophyd
 matplotlib
